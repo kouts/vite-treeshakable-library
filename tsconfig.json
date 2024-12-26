@@ -1,0 +1,62 @@
+{
+  "include": [
+    "*.d.ts",
+    "playground/**/*",
+    "playground/**/*.vue",
+    "tailwind.config.ts",
+    "tests/**/*",
+    "tests/**/*.vue",
+    "vite.config.*",
+    "vite-plugins/**/*",
+    "lib/**/*.ts",
+    "lib/**/*.d.ts",
+    "lib/**/*.tsx",
+    "lib/**/*.vue",
+  ],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "module": "ESNext",
+    "target": "ESNext",
+    "lib": [
+      "DOM",
+      "ESNext"
+    ],
+    "strict": true,
+    "esModuleInterop": true,
+    "jsx": "preserve",
+    "skipLibCheck": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "noUnusedLocals": true,
+    "strictNullChecks": true,
+    "allowJs": true,
+    "forceConsistentCasingInFileNames": true,
+    "types": [
+      "vite/client",
+      "vitest/globals",
+      "jsdom",
+      "node",
+    ],
+    "paths": {
+      "@/*": [
+        "./playground/*"
+      ],
+      "@root/*": [
+        "./*"
+      ],
+      "@assets/*": [
+        "./playground/assets/*"
+      ],
+      "@lib/*": [
+        "./lib/*"
+      ],
+      "@tests/*": [
+        "./tests/*"
+      ]
+    }
+  },
+  "exclude": [
+    "dist",
+    "node_modules"
+  ]
+}

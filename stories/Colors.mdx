@@ -1,0 +1,48 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Vite treeshakable library/Colors" />
+
+export const colors = [
+  { name: 'white', hex: '#ffffff' },
+  { name: 'black', hex: '#000000' },
+];
+
+# Colors
+
+Vite treeshakable library uses [Tailwind](https://tailwindcss.com) as its CSS framework.
+
+We are extending the default Tailwind config with the colors in the list below.  
+You can use them in all Tailwind color-related classes e.g `bg-white`, `text-black` etc.
+
+<div className="relative overflow-x-auto">
+  <table className="w-full text-sm">
+    <thead className="bg-athens-gray text-xs text-night">
+      <tr>
+        <th scope="col" className="px-6 py-4 text-left">
+          Color Name
+        </th>
+        <th scope="col" className="px-6 py-4 text-center">
+          Color
+        </th>
+        <th scope="col" className="px-6 py-4 text-left">
+          Hex
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {colors.map((item, index) => {
+        return (
+          <tr key={item.name}>
+            <td className="px-6 py-4 text-left">{item.name}</td>
+            <td className="px-6 py-4 text-center">
+              <div className="w-full flex h-full justify-center">
+                <div className="h-12 w-12 rounded" style={{ background: item.hex }}></div>
+              </div>
+            </td>
+            <td className="px-6 py-4 text-left">{item.hex}</td>
+          </tr>
+        );
+      })}
+    </tbody>
+  </table>
+</div>

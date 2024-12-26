@@ -1,0 +1,45 @@
+# OSX
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Env files
+.env
+.env.*.local
+.env.*
+
+# SublimeText
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+*.sublime-project
+*.sublime-workspace
+
+# Unit test / coverage reports
+.coverage
+
+# Vim
+*~
+*.swp
+*.swo
+
+# npm
+node_modules
+
+# pnpm
+.pnpm-store
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw*
+
+# Storybook build
+storybook-static/
+
+# Build
+dist
