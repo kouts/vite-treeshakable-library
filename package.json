@@ -2,6 +2,10 @@
   "name": "@kouts/vite-treeshakable-library",
   "description": "Vite treeshakable library",
   "version": "0.0.0-semantic-release",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "packageManager": "pnpm@9.15.2",
   "type": "module",
   "scripts": {
