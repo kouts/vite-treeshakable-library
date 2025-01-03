@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/kouts/vite-treeshakable-library/compare/v1.0.2...v1.0.3) (2025-01-03)
+
+
+### Bug Fixes
+
+* fixed types in vue plugin ([d4d4b6e](https://github.com/kouts/vite-treeshakable-library/commit/d4d4b6e1559e383092334b625f1bc94d0dc29da2))
+
 ## [1.0.2](https://github.com/kouts/vite-treeshakable-library/compare/v1.0.1...v1.0.2) (2025-01-03)
 
 
