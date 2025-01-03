@@ -4,7 +4,7 @@ export const libTailwindConfig = {
   content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx,mdx}'],
   theme: {
     fontFamily: {
-      sans: ['Inter', 'Helvetica', 'Arial', 'sans-serif'],
+      sans: ['Helvetica', 'Arial', 'sans-serif'],
     },
     extend: {
       colors: {

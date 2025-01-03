@@ -31,7 +31,6 @@ export default function vuePlugin() {
     template: {
       compilerOptions: {
         nodeTransforms: isProd ? [stripAttrs] : [],
-        isCustomElement: (tag) => tag === 'iconify-icon',
       },
     },
   })

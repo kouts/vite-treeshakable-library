@@ -91,7 +91,7 @@ export default defineConfig(() => ({
     coverage: {
       reporter: ['text', 'json-summary'],
       include: ['lib/**'],
-      // Exclude the entry file, test files, storybook stories, and TypeScript declaration files from the coverage report
+      // Exclude test files, storybook stories, and TypeScript declaration files from the coverage report
       exclude: ['**/*.spec.{js,ts}', '**/*.stories.{js,ts}', '**/*.d.ts'],
     },
   },
