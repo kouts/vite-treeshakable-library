@@ -114,6 +114,12 @@ pnpm run test-storybook
 pnpm run test:unit
 ```
 
+## Run unit tests and generate coverage report
+
+```bash
+pnpm run test:unit-coverage
+```
+
 ### Lint files
 
 ```bash

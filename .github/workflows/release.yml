@@ -7,12 +7,7 @@ on:
 jobs:
   ci:
     name: ci
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        node: [20]
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout 🛎
@@ -23,8 +18,9 @@ jobs:
       - name: Setup node env 🏗
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node }}
+          node-version-file: '.nvmrc'
           check-latest: true
+          cache: 'pnpm'
 
       - name: Setup pnpm 📦
         uses: pnpm/action-setup@v4
@@ -62,12 +58,7 @@ jobs:
       contents: read
       pages: write
       id-token: write
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        node: [20]
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout 🛎
@@ -78,8 +69,9 @@ jobs:
       - name: Setup node env 🏗
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node }}
+          node-version-file: '.nvmrc'
           check-latest: true
+          cache: 'pnpm'
 
       - name: Setup pnpm 📦
         uses: pnpm/action-setup@v4
