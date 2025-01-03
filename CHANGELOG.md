@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/kouts/vite-treeshakable-library/compare/v1.0.1...v1.0.2) (2025-01-03)
+
+
+### Bug Fixes
+
+* added template docs ([7e2fd5e](https://github.com/kouts/vite-treeshakable-library/commit/7e2fd5e412b5f29e23b7f5f45e56d9d1b3e760ef))
+
 ## [1.0.1](https://github.com/kouts/vite-treeshakable-library/compare/v1.0.0...v1.0.1) (2025-01-03)
 
 
