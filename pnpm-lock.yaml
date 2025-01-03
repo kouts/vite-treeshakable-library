@@ -60,7 +60,7 @@ importers:
         specifier: ^21.1.7
         version: 21.1.7
       '@types/node':
-        specifier: ^22.10.3
+        specifier: ^22.10.5
         version: 22.10.5
       '@vitejs/plugin-vue':
         specifier: ^5.2.1
@@ -84,7 +84,7 @@ importers:
         specifier: ^9.17.0
         version: 9.17.0(jiti@2.4.2)
       eslint-plugin-storybook:
-        specifier: ^0.11.1
+        specifier: ^0.11.2
         version: 0.11.2(eslint@9.17.0(jiti@2.4.2))(typescript@5.7.2)
       glob:
         specifier: ^11.0.0
@@ -132,7 +132,7 @@ importers:
         specifier: ^5.7.2
         version: 5.7.2
       vite:
-        specifier: ^6.0.6
+        specifier: ^6.0.7
         version: 6.0.7(@types/node@22.10.5)(jiti@2.4.2)(sass@1.83.0)(yaml@2.7.0)
       vitest:
         specifier: ^2.1.8
