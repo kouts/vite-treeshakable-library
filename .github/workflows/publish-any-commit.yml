@@ -9,12 +9,16 @@ jobs:
       - name: Checkout 🛎
         uses: actions/checkout@v4
 
-      - run: corepack enable
-      - uses: actions/setup-node@v4
+      - name: Setup node env 🏗
+        uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
-          check-latest: true
-          cache: 'pnpm'
+          check-latest: true        
+
+      - name: Setup pnpm 📦
+        uses: pnpm/action-setup@v4
+        with:
+          package_json_file: package.json
 
       - name: Install dependencies 📦
         run: pnpm install
