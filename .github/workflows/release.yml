@@ -41,6 +41,15 @@ jobs:
       - name: Run tests 🧪
         run: pnpm run test:unit-coverage
 
+      - name: Install Playwright browsers
+        run: pnpm dlx playwright install --with-deps
+
+      - name: Build Storybook
+        run: pnpm run build-storybook
+
+      - name: Run Storybook UI tests 🎭
+        run: pnpm run test-storybook
+
       - name: Build
         run: pnpm run build
 

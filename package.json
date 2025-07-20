@@ -16,13 +16,13 @@
     "preview": "vite preview",
     "lint": "eslint \"**/*.{vue,ts,js}\"",
     "lint-fix": "eslint --fix \"**/*.{vue,ts,js}\"",
-    "test:unit": "vitest",
-    "test:unit-coverage": "vitest run --coverage && make-coverage-badge",
+    "test:unit": "vitest --project=unit",
+    "test:unit-coverage": "vitest run --coverage --project=unit && make-coverage-badge",
     "typecheck": "vue-tsc --noEmit",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test-storybook": "vitest run --project=storybook",
-    "quality": "pnpm run lint && pnpm run typecheck && vitest run && pnpm run build",
+    "quality": "pnpm run lint && pnpm run typecheck && vitest run --project=unit && vitest run --project=storybook && pnpm run build",
     "prepare": "husky"
   },
   "files": [
