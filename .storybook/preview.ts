@@ -1,5 +1,5 @@
 import '../playground/assets/main.css'
-import { setup } from '@storybook/vue3'
+import { setup } from '@storybook/vue3-vite'
 import { createRouter, createWebHistory } from 'vue-router'
 import theme from './theme'
 

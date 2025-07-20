@@ -1,6 +1,6 @@
 import VAlert from '@lib/components/v-alert/v-alert.vue'
-import { expect, within } from '@storybook/test'
-import type { Meta, StoryObj } from '@storybook/vue3'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
+import { expect, within } from 'storybook/test'
 
 const meta: Meta<typeof VAlert> = {
   title: 'Components/VAlert',
