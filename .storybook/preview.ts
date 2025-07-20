@@ -7,14 +7,11 @@ import theme from './theme'
 const router = createRouter({
   history: createWebHistory(),
   routes: [
+    // Catch-all route to handle all paths
     {
-      path: '/dummy',
-      name: 'dummy',
-      component: { template: '<div>Dummy</div>' },
-      beforeEnter: (to, from, next) => {
-        alert('Navigating to dummy route...')
-        // noop
-      },
+      path: '/:pathMatch(.*)*',
+      name: 'storybook-catchall',
+      component: { template: '<div>Storybook</div>' },
     },
   ],
 })

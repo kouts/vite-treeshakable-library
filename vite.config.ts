@@ -1,6 +1,7 @@
 import { fileURLToPath } from 'node:url'
+import { storybookTest } from '@storybook/addon-vitest/vitest-plugin'
 import { glob } from 'glob'
-import { resolve } from 'path'
+import { join, resolve } from 'path'
 import { defineConfig } from 'vite'
 import pkg from './package.json'
 import vueSvgPlugin from './vite-plugins/svg'
@@ -11,7 +12,7 @@ import vuePlugin from './vite-plugins/vue'
 // We have to be careful with the files we include here, as we don't want to include test files, storybook stories and files that contain only types.
 const createEntries = () => {
   const entries = new Map<string, string>()
-  const excludeFiles = ['.spec.ts', '.stories.ts']
+  const excludeFiles = ['.types.ts', '.spec.ts', '.stories.ts']
 
   for (const file of glob.sync('lib/**/*.{ts,vue}')) {
     const fileName = file.split('/').at(-1)?.split('.')[0]
@@ -87,5 +88,40 @@ export default defineConfig({
       // Exclude test files, storybook stories, and TypeScript declaration files from the coverage report
       exclude: ['**/*.spec.{js,ts}', '**/*.stories.{js,ts}', '**/*.d.ts'],
     },
+    // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
+    projects: [
+      {
+        extends: true,
+        test: {
+          name: 'unit',
+        },
+      },
+      {
+        extends: true,
+        plugins: [
+          // The plugin will run tests for the stories defined in your Storybook config
+          // See options at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon#storybooktest
+          storybookTest({
+            configDir: join(__dirname, '.storybook'),
+            // Use the environment variable for better debugging in CI
+            storybookUrl: process.env.SB_URL,
+          }),
+        ],
+        test: {
+          name: 'storybook',
+          browser: {
+            enabled: true,
+            headless: true,
+            provider: 'playwright',
+            instances: [
+              {
+                browser: 'chromium',
+              },
+            ],
+          },
+          setupFiles: ['.storybook/vitest.setup.ts'],
+        },
+      },
+    ],
   },
 })
