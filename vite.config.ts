@@ -34,7 +34,7 @@ const createEntries = () => {
   return res
 }
 
-export default defineConfig(() => ({
+export default defineConfig({
   plugins: [vuePlugin(), vueSvgPlugin()],
   resolve: {
     alias: {
@@ -43,13 +43,6 @@ export default defineConfig(() => ({
       '@assets': resolve(__dirname, '/playground/assets'),
       '@lib': resolve(__dirname, '/lib'),
       '@tests': resolve(__dirname, '/tests'),
-    },
-  },
-  css: {
-    preprocessorOptions: {
-      scss: {
-        api: 'modern-compiler', // or "modern"
-      },
     },
   },
   build: {
@@ -95,4 +88,4 @@ export default defineConfig(() => ({
       exclude: ['**/*.spec.{js,ts}', '**/*.stories.{js,ts}', '**/*.d.ts'],
     },
   },
-}))
+})

@@ -19,4 +19,8 @@
 <script setup lang="ts">
 import { ALERT_TYPES } from '@lib/components/v-alert/v-alert.types'
 import VAlert from '@lib/components/v-alert/v-alert.vue'
+
+defineOptions({
+  name: 'PlaygroundPagesVAlert',
+})
 </script>
