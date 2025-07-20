@@ -35,7 +35,7 @@ beforeAll(() => {
     }
   }
 
-  global.ResizeObserver = class ResizeObserver {
+  globalThis.ResizeObserver = class ResizeObserver {
     // eslint-disable-next-line @typescript-eslint/no-useless-constructor
     constructor() {
       //

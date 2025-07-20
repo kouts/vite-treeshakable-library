@@ -1,5 +1,5 @@
 // https://storybook.js.org/docs/configure/user-interface/theming
-import { create } from '@storybook/theming/create'
+import { create } from 'storybook/theming/create'
 
 export default create({
   base: 'light',

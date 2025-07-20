@@ -1,6 +1,6 @@
 import VAlert from '@lib/components/v-alert/v-alert.vue'
-import { expect, within } from '@storybook/test'
-import type { Meta, StoryObj } from '@storybook/vue3'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
+import { expect, within } from 'storybook/test'
 
 const meta: Meta<typeof VAlert> = {
   title: 'Components/VAlert',
@@ -10,6 +10,9 @@ const meta: Meta<typeof VAlert> = {
     type: {
       control: { type: 'select' },
       options: ['info', 'warning', 'error', 'success'],
+    },
+    closable: {
+      control: { type: 'boolean' },
     },
   },
   parameters: {
@@ -68,4 +71,35 @@ export const Error = {
     ...Info.args,
     type: 'error',
   },
+}
+
+export const Closable: Story = {
+  render: (args) => ({
+    components: { VAlert },
+    setup() {
+      return { args }
+    },
+    template: `<VAlert v-bind="args">${args.default}</VAlert>`,
+  }),
+  args: {
+    ...Info,
+    closable: true,
+    default: 'This alert can be closed by clicking the X button',
+  },
+}
+
+Closable.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const alertDiv = await canvas.getByRole('alert')
+  const firstDiv = alertDiv.querySelector('div')
+  const closeButton = await canvas.getByRole('button', { name: /close/i })
+
+  await expect(alertDiv).toBeVisible()
+  await expect(firstDiv?.innerText).toBe('This alert can be closed by clicking the X button')
+  await expect(closeButton).toBeVisible()
+  await expect(closeButton).toHaveAttribute('aria-label', 'Close')
+
+  await closeButton.click()
+
+  await expect(alertDiv).not.toBeVisible()
 }

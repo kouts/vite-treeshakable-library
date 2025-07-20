@@ -8,4 +8,8 @@
 
 <script setup lang="ts">
 import NotFoundIcon from '@assets/not-found.svg?inline'
+
+defineOptions({
+  name: 'PlaygroundPagesNotFound',
+})
 </script>

@@ -18,6 +18,7 @@ This repository provides a [Vite](https://vite.dev/) template for creating JavaS
 - **Storybook Integration:**
   - Documentation and components preview via [Storybook](https://storybook.js.org/).
   - Storybook deployment to GitHub Pages.
+  - Visual regression testing with Playwright for Storybook stories.
 - **Playground Environment:**
   - A playground setup for testing and previewing your components in isolation.
 - **Path Aliases:**
