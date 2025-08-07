@@ -82,20 +82,35 @@ export const Closable: Story = {
     template: `<VAlert v-bind="args">${args.default}</VAlert>`,
   }),
   args: {
-    ...Info,
+    ...Info.args,
     closable: true,
     default: 'This alert can be closed by clicking the X button',
   },
 }
 
-Closable.play = async ({ canvasElement }) => {
+export const ClosableClickTest: Story = {
+  render: (args) => ({
+    components: { VAlert },
+    setup() {
+      return { args }
+    },
+    template: `<VAlert v-bind="args">${args.default}</VAlert>`,
+  }),
+  args: {
+    ...Info.args,
+    closable: true,
+    default: 'This alert will be automatically closed during the test',
+  },
+}
+
+ClosableClickTest.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement)
   const alertDiv = await canvas.getByRole('alert')
   const firstDiv = alertDiv.querySelector('div')
   const closeButton = await canvas.getByRole('button', { name: /close/i })
 
   await expect(alertDiv).toBeVisible()
-  await expect(firstDiv?.innerText).toBe('This alert can be closed by clicking the X button')
+  await expect(firstDiv?.innerText).toBe('This alert will be automatically closed during the test')
   await expect(closeButton).toBeVisible()
   await expect(closeButton).toHaveAttribute('aria-label', 'Close')
 
