@@ -1,3 +1,10 @@
+## [1.0.12](https://github.com/kouts/vite-treeshakable-library/compare/v1.0.11...v1.0.12) (2025-11-01)
+
+
+### Bug Fixes
+
+* added repository attribute to package.json ([b019747](https://github.com/kouts/vite-treeshakable-library/commit/b019747be7e9672932bbfd0920080106a08e1b56))
+
 ## [1.0.11](https://github.com/kouts/vite-treeshakable-library/compare/v1.0.10...v1.0.11) (2025-11-01)
 
 
