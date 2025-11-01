@@ -50,5 +50,6 @@
     "node_modules",
     "lib/**/*.js",
     "lib/**/*.spec.ts",
+    "lib/**/*.stories.ts",
   ]
 }

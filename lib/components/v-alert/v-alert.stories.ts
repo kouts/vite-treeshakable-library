@@ -2,7 +2,7 @@ import VAlert from '@lib/components/v-alert/v-alert.vue'
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import { expect, within } from 'storybook/test'
 
-const meta: Meta<typeof VAlert> = {
+const meta = {
   title: 'Components/VAlert',
   component: VAlert,
   tags: ['autodocs'],
@@ -23,11 +23,11 @@ const meta: Meta<typeof VAlert> = {
       },
     },
   },
-}
+} satisfies Meta<typeof VAlert>
 
 export default meta
 
-type Story = StoryObj<typeof VAlert>
+type Story = StoryObj<typeof meta>
 
 export const Info: Story = {
   render: (args) => ({
@@ -43,7 +43,7 @@ export const Info: Story = {
   },
 }
 
-Info.play = async ({ canvasElement }) => {
+Info.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement)
   const alertDiv = await canvas.getByRole('alert')
 

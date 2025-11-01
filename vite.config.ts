@@ -1,5 +1,6 @@
 import { fileURLToPath } from 'node:url'
 import { storybookTest } from '@storybook/addon-vitest/vitest-plugin'
+import { playwright } from '@vitest/browser-playwright'
 import { glob } from 'glob'
 import { join, resolve } from 'path'
 import { defineConfig } from 'vite'
@@ -112,7 +113,7 @@ export default defineConfig({
           browser: {
             enabled: true,
             headless: true,
-            provider: 'playwright',
+            provider: playwright(),
             instances: [
               {
                 browser: 'chromium',
