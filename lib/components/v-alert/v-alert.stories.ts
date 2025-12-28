@@ -1,6 +1,7 @@
 import VAlert from '@lib/components/v-alert/v-alert.vue'
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import { expect, within } from 'storybook/test'
+import { h } from 'vue'
 
 const meta = {
   title: 'Components/VAlert',
@@ -30,13 +31,7 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Info: Story = {
-  render: (args) => ({
-    components: { VAlert },
-    setup() {
-      return { args }
-    },
-    template: `<VAlert v-bind="args">${args.default}</VAlert>`,
-  }),
+  render: (args) => () => h(VAlert, args, () => args.default),
   args: {
     type: 'info',
     default: 'Lorem ipsum dolor sit amet',
@@ -74,13 +69,7 @@ export const Error = {
 }
 
 export const Closable: Story = {
-  render: (args) => ({
-    components: { VAlert },
-    setup() {
-      return { args }
-    },
-    template: `<VAlert v-bind="args">${args.default}</VAlert>`,
-  }),
+  render: (args) => () => h(VAlert, args, () => args.default),
   args: {
     ...Info.args,
     closable: true,
@@ -89,13 +78,7 @@ export const Closable: Story = {
 }
 
 export const ClosableClickTest: Story = {
-  render: (args) => ({
-    components: { VAlert },
-    setup() {
-      return { args }
-    },
-    template: `<VAlert v-bind="args">${args.default}</VAlert>`,
-  }),
+  render: (args) => () => h(VAlert, args, () => args.default),
   args: {
     ...Info.args,
     closable: true,
