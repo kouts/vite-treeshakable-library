@@ -14,7 +14,7 @@ This repository provides a [Vite](https://vite.dev/) template for creating JavaS
   - Out-of-the-box support for Vue 3 components and utilities.
   - Includes example components such as `VAlert`.
 - **Tailwind CSS Integration:**
-  - Includes configurable Tailwind preset for shared styles.
+  - Includes Tailwind theme and custom styles for shared design tokens and utility classes.
 - **Storybook Integration:**
   - Documentation and components preview via [Storybook](https://storybook.js.org/).
   - Storybook deployment to GitHub Pages.
@@ -111,29 +111,45 @@ To add a new component:
 
 In `vite.config.ts`, the `build.lib.entry` option defines the entry points for the library. The `createEntries` function dynamically generates an entry point for each file in the `lib/` directory (such as `.ts` and `.vue` files), allowing Rollup to split them into separate chunks. This approach ensures effective tree-shaking by including *only* the used code in the final bundle. It also excludes unnecessary files, such as tests or Storybook stories, avoiding the creation of redundant chunks and optimizing the output. This method offers greater flexibility and control over the chunking process compared to using `output.preserveModules`. For more details, see the [Rollup documentation](https://rollupjs.org/configuration-options/#input).
 
-### Tailwind Configuration
+### Tailwind Theme and Styles
 
-The library exports a Tailwind CSS configuration file, which can be extended or customized for consumer projects. For example, custom colors or other design tokens can be defined in `lib/tailwind/config.ts`.
+This library uses [Tailwind CSS v4](https://tailwindcss.com/), which introduces a CSS-first configuration approach using the `@theme` directive.
 
-To use the exported Tailwind configuration in a consumer project:
+The library's design tokens (colors, fonts, etc.) are defined in `lib/assets/lib.css` using the `@theme` directive. This file can also include any custom utility classes or component styles:
 
-1. Import the configuration into the consumer project's `tailwind.config.js`:
-```js
-import { libTailwindConfig } from '@kouts/vite-treeshakable-library';
-
-export default {
-  presets: [libTailwindConfig],
-  content: [
-    './index.html',
-    './src/**/*.{vue,js,ts,jsx,tsx,mdx}',
-    './node_modules/@kouts/vite-treeshakable-library/dist/**/*.{vue,js,ts,jsx,tsx,mdx}',
-  ],
-};
+```css
+@theme {
+  --color-midnight: #1e293b;
+  --color-ocean: #0ea5e9;
+  /* ... more tokens */
+}
 ```
 
-2. Extend the configuration to add project-specific styles if needed.
+This CSS file is automatically bundled and exported as `@kouts/vite-treeshakable-library/assets/lib.css`. Consumer projects import this CSS to access the library's theme tokens, custom utility classes, and component styles.
 
-This allows for consistent design tokens and utility classes between the library and the consuming project.
+To use the library's Tailwind theme and styles in a consumer project:
+
+1. Install Tailwind CSS v4 and its Vite plugin:
+```bash
+pnpm i -D tailwindcss @tailwindcss/vite
+```
+
+2. Add the Tailwind plugin to your `vite.config.ts`:
+```ts
+import tailwindcss from '@tailwindcss/vite'
+
+export default defineConfig({
+  plugins: [tailwindcss()],
+})
+```
+
+3. Import the library's styles in your project's main CSS file:
+```css
+@import 'tailwindcss';
+@import '@kouts/vite-treeshakable-library/assets/lib.css';
+```
+
+This gives your project access to the library's theme tokens (e.g., `bg-midnight`, `text-ocean`), custom utility classes, and component styles.
 
 ---
 
@@ -196,10 +212,23 @@ To adapt this template for frameworks like React or vanilla JavaScript:
 
 ## Publishing Your Library
 
-This repository uses **semantic-release** for automated `npm` publishing. In order to publish your library, you need to first login to your `npm` account, create an `npm` token and then add it to your GitHub repository secrets.  
-Refer to the [semantic-release documentation](https://semantic-release.gitbook.io/semantic-release/) for more information.
+This repository uses **semantic-release** for automated `npm` publishing with [Trusted Publishers](https://docs.npmjs.com/trusted-publishers) (OIDC authentication). This eliminates the need for long-lived npm tokens, providing enhanced security through short-lived, workflow-specific credentials.
 
-Follow these steps for a seamless release process:
+### Setting Up Trusted Publishing
+
+1. Navigate to your package settings on [npmjs.com](https://www.npmjs.com/) and find the "Trusted Publisher" section.
+2. Select "GitHub Actions" as your provider.
+3. Configure the following fields:
+   - **Organization or user**: Your GitHub username or organization name
+   - **Repository**: Your repository name
+   - **Workflow filename**: `release.yml` (or your release workflow filename)
+   - **Environment name** (optional): If using GitHub environments for deployment protection
+
+For more details, refer to the [npm Trusted Publishers documentation](https://docs.npmjs.com/trusted-publishers).
+
+### Release Process
+
+Follow these steps for a seamless release:
 
 1. Ensure all changes are committed using **conventional commit messages**:
    - Example commit message: `feat: add new button component`
@@ -208,10 +237,13 @@ Follow these steps for a seamless release process:
 2. Push your changes to the `main` branch. The GitHub Actions workflow will:
    - Run tests and validate your code.
    - Determine the next version based on your commit messages.
-   - Publish the package to npm automatically.
+   - Publish the package to npm automatically using OIDC authentication.
+   - Generate provenance attestations for your package.
    - Update the changelog and create a GitHub release.
 
 3. Monitor the Actions tab in your repository to ensure the release completes successfully.
+
+**Note:** Ensure your GitHub Actions workflow includes the `id-token: write` permission, which is required for OIDC token generation. Refer to the [semantic-release documentation](https://semantic-release.gitbook.io/semantic-release/) for more information.
 
 ---
 
@@ -249,31 +281,27 @@ Install the package and its dependencies using `pnpm`:
 pnpm i vue @kouts/vite-treeshakable-library
 ```
 
-Install Tailwind CSS:
+Install Tailwind CSS v4 and its Vite plugin:
 
 ```bash
-pnpm i -D tailwindcss
+pnpm i -D tailwindcss @tailwindcss/vite
 ```
 
-Import the CSS to your project's `main.css` file:
+Add the Tailwind plugin to your `vite.config.ts`:
+
+```ts
+import tailwindcss from '@tailwindcss/vite'
+
+export default defineConfig({
+  plugins: [tailwindcss()],
+})
+```
+
+Import Tailwind and the library's styles in your project's `main.css` file:
 
 ```css
+@import 'tailwindcss';
 @import '@kouts/vite-treeshakable-library/assets/lib.css';
-```
-
-Use the Tailwind configuration as a `preset` in your project's `tailwind.config.js` file:
-
-```js
-import { libTailwindConfig } from '@kouts/vite-treeshakable-library';
-
-export default {
-  presets: [libTailwindConfig],
-  content: [
-    './index.html',
-    './src/**/*.{vue,js,ts,jsx,tsx,mdx}',
-    './node_modules/@kouts/vite-treeshakable-library/dist/**/*.{vue,js,ts,jsx,tsx,mdx}',
-  ],
-};
 ```
 
 Import and use the components you need in your Vue 3 project:
@@ -299,8 +327,6 @@ If you are using Jest for unit testing in your consumer project, you will need t
 ```
 
 ## Contributing
-
----
 
 :fire: **HEADS UP!** This repo uses [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) and [semantic-release](https://github.com/semantic-release/semantic-release) to automate the whole package release workflow including: determining the next version number, generating the release notes, and publishing the package to npm.  
 Commit messages have to follow the commit message format when contributing.

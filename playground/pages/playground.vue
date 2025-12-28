@@ -1,5 +1,5 @@
 <template>
-  <div class="flex h-full w-full flex-col px-6 pt-4">
+  <div class="flex min-h-full w-full flex-col p-6">
     <nav v-if="!playgroundPageLoading" class="flex">
       <ul class="inline-flex items-center space-x-1">
         <li class="inline-flex items-center">
@@ -36,15 +36,19 @@
         <h1 class="text-3xl font-bold">Welcome to the playground!</h1>
         <div class="mt-4">Select a playground <strong>page</strong> from the list below:</div>
       </div>
-      <div class="mb-6 mt-2 overflow-y-auto rounded-lg bg-white shadow lg:w-1/3">
-        <ul class="divide-p-gray-20 block divide-y">
+      <div class="mt-2 mb-6 overflow-y-auto rounded-lg bg-white shadow-sm lg:w-1/3">
+        <ul class="block divide-y divide-slate-200">
           <li v-for="link in playgroundPageLinks" :key="link" class="hover:bg-slate-400 hover:text-white">
             <RouterLink :to="`/playground/${link}`" class="block p-3">{{ link }}</RouterLink>
           </li>
         </ul>
       </div>
     </template>
-    <Component :is="playgroundPage" v-if="!error && playgroundPage && !playgroundPageLoading" />
+    <Component
+      :is="playgroundPage"
+      v-if="!error && playgroundPage && !playgroundPageLoading"
+      :class="{ 'mt-4': !error && playgroundPage && !playgroundPageLoading }"
+    />
   </div>
 </template>
 

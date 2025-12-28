@@ -43,8 +43,7 @@ Info.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const alertDiv = await canvas.getByRole('alert')
 
   await expect(alertDiv.innerText).toBe('Lorem ipsum dolor sit amet')
-  await expect(alertDiv).toHaveClass('p-4 rounded-lg')
-  await expect(alertDiv).toHaveStyle('background-color: #eff6ff')
+  await expect(alertDiv).toHaveClass('p-4 rounded-lg bg-blue-50')
 }
 
 export const Success = {
