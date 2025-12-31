@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/kouts/vite-treeshakable-library/compare/v1.0.13...v2.0.0) (2025-12-31)
+
+
+### Bug Fixes
+
+* updated tailwind to v4 ([7be079d](https://github.com/kouts/vite-treeshakable-library/commit/7be079d80d00ea6f8ad5cc6be52a662896016a54))
+
+
+### BREAKING CHANGES
+
+* Updated tailwind to v4
+
 ## [1.0.13](https://github.com/kouts/vite-treeshakable-library/compare/v1.0.12...v1.0.13) (2025-12-28)
 
 
