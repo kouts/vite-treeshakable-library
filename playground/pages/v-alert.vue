@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-4">
+  <div>
     <h1 class="text-2xl font-bold">VAlert</h1>
     <div class="mt-4 flex flex-col gap-2 bg-white p-4">
       <h2 class="text-lg font-semibold">Default alert</h2>

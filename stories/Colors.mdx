@@ -3,8 +3,14 @@ import { Meta } from '@storybook/addon-docs/blocks';
 <Meta title="Vite treeshakable library/Colors" />
 
 export const colors = [
-  { name: 'white', hex: '#ffffff' },
-  { name: 'black', hex: '#000000' },
+  { name: 'midnight', hex: '#1e293b' },
+  { name: 'ocean', hex: '#0ea5e9' },
+  { name: 'coral', hex: '#f43f5e' },
+  { name: 'sunset', hex: '#f97316' },
+  { name: 'lavender', hex: '#a78bfa' },
+  { name: 'mint', hex: '#34d399' },
+  { name: 'honey', hex: '#fbbf24' },
+  { name: 'pewter', hex: '#64748b' },
 ];
 
 # Colors
@@ -12,7 +18,7 @@ export const colors = [
 Vite treeshakable library uses [Tailwind](https://tailwindcss.com) as its CSS framework.
 
 We are extending the default Tailwind config with the colors in the list below.  
-You can use them in all Tailwind color-related classes e.g `bg-white`, `text-black` etc.
+You can use them in all Tailwind color-related classes e.g `bg-midnight`, `text-ocean` etc.
 
 <div className="relative overflow-x-auto">
   <table className="w-full text-sm">
@@ -36,7 +42,7 @@ You can use them in all Tailwind color-related classes e.g `bg-white`, `text-bla
             <td className="px-6 py-4 text-left">{item.name}</td>
             <td className="px-6 py-4 text-center">
               <div className="w-full flex h-full justify-center">
-                <div className="h-12 w-12 rounded" style={{ background: item.hex }}></div>
+                <div className="h-12 w-12 rounded-sm" style={{ background: item.hex }}></div>
               </div>
             </td>
             <td className="px-6 py-4 text-left">{item.hex}</td>

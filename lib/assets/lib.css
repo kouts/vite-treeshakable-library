@@ -1,5 +1,18 @@
-:root {
+@import './utils.css';
+
+@theme {
   /* Design system colors */
-  --color-white: 255 255 255;
-  --color-black: 0 0 0;
+  --color-midnight: #1e293b;
+  --color-ocean: #0ea5e9;
+  --color-coral: #f43f5e;
+  --color-sunset: #f97316;
+  --color-lavender: #a78bfa;
+  --color-mint: #34d399;
+  --color-honey: #fbbf24;
+  --color-pewter: #64748b;
+
+  /* Fonts */
+  --font-sans: Helvetica, Arial, sans-serif;
 }
+
+@source './**/*.{vue,js,jsx,ts,tsx}';

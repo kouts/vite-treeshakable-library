@@ -1,8 +1,6 @@
 <template>
-  <main class="flex h-screen w-full overflow-auto bg-slate-100">
-    <div class="h-full w-full pt-0">
-      <slot></slot>
-    </div>
+  <main class="min-h-screen w-full bg-slate-100">
+    <slot></slot>
   </main>
 </template>
 

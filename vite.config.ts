@@ -1,5 +1,6 @@
 import { fileURLToPath } from 'node:url'
 import { storybookTest } from '@storybook/addon-vitest/vitest-plugin'
+import tailwindcss from '@tailwindcss/vite'
 import { playwright } from '@vitest/browser-playwright'
 import { glob } from 'glob'
 import { join, resolve } from 'path'
@@ -37,7 +38,7 @@ const createEntries = () => {
 }
 
 export default defineConfig({
-  plugins: [vuePlugin(), vueSvgPlugin()],
+  plugins: [vuePlugin(), vueSvgPlugin(), tailwindcss()],
   resolve: {
     alias: {
       '@': resolve(__dirname, '/playground'),
