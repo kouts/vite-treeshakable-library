@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/kouts/vite-treeshakable-library/compare/v2.0.0...v2.0.1) (2026-03-01)
+
+
+### Bug Fixes
+
+* updated npm packages ([0577b9d](https://github.com/kouts/vite-treeshakable-library/commit/0577b9d7b380025908993c0ae8c3357a39a970d0))
+
 # [2.0.0](https://github.com/kouts/vite-treeshakable-library/compare/v1.0.13...v2.0.0) (2025-12-31)
 
 
