@@ -57,7 +57,7 @@ export default defineConfig({
       name: 'lib',
       formats: ['es', 'cjs'],
     },
-    rollupOptions: {
+    rolldownOptions: {
       // External modules that we don't want bundled into the library (automatically extracted from package.json peerDependencies)
       external: [...Object.keys(pkg.peerDependencies), 'tailwindcss', 'tailwindcss/resolveConfig'],
       output: {
@@ -121,7 +121,6 @@ export default defineConfig({
               },
             ],
           },
-          setupFiles: ['.storybook/vitest.setup.ts'],
         },
       },
     ],
