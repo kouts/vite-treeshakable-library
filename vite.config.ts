@@ -81,7 +81,6 @@ export default defineConfig({
     // Clear the mocks call count before each test so that we don't have to call vi.clearAllMocks manually - https://vitest.dev/config/#clearmocks
     clearMocks: true,
     globalSetup: './tests/vitest.global-setup.ts',
-    setupFiles: ['./tests/vitest.globals.ts', './tests/vitest.extends.ts'],
     environment: 'jsdom',
     reporters: ['default'],
     coverage: {
@@ -96,6 +95,7 @@ export default defineConfig({
         extends: true,
         test: {
           name: 'unit',
+          setupFiles: ['./tests/vitest.globals.ts', './tests/vitest.extends.ts'],
         },
       },
       {
@@ -111,6 +111,7 @@ export default defineConfig({
         ],
         test: {
           name: 'storybook',
+          setupFiles: ['./tests/vitest.browser.globals.ts'],
           browser: {
             enabled: true,
             headless: true,

@@ -1,8 +1,4 @@
-import { enableAutoUnmount } from '@vue/test-utils'
-import { afterAll, afterEach, beforeAll, vi } from 'vitest'
-
-// Automatically destroy Vue wrappers after each test - https://test-utils.vuejs.org/api/#enableAutoUnmount
-enableAutoUnmount(afterEach)
+import { afterAll, beforeAll, vi } from 'vitest'
 
 beforeAll(() => {
   globalThis.IntersectionObserver = class IntersectionObserver {
